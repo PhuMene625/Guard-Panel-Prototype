@@ -4,20 +4,24 @@ html {
 }
 #base {
   height: 400px;
+  position: absolute;
+  top: 20px;
 }
 
 .lever-switch {
-  width: 100px;
-  height: 200px;
+  width: 75px;
+  height: 150px;
   display: block;
+  left: 170px;
+  top:2px;
   position: absolute;
   transition: transform 1s ease;
   transform-origin: center center; /* TOURNE AUTOUR DE TOI PUTAIN */
 }
 
 .lever-switch img {
-  width: 100px;
-  height: 200px;
+  width: 75px;
+  height: 150px;
   object-fit: contain;
 }
 
