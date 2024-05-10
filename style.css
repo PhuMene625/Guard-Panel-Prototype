@@ -5,3 +5,22 @@ html {
 #base {
   height: 400px;
 }
+
+.lever-switch {
+  width: 100px;
+  height: 200px;
+  display: block;
+  position: absolute;
+  transition: transform 1s ease;
+  transform-origin: center center; /* TOURNE AUTOUR DE TOI PUTAIN */
+}
+
+.lever-switch img {
+  width: 100px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.lever-switch.on {
+  transform: rotate(90deg);
+}
