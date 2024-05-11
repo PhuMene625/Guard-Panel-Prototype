@@ -2,13 +2,15 @@ window.onload = start()
 // Défninir variable blink
 let blink
 // Définir variable interlock au début
-var interlock = 1
+var interlock = 0
 // Définir door 0: ouvert 1: fermé
 var door = 0
 // Définir local door 0: fermé 1: ouvert
 var local = 0
 // Variable buzzer
 const buzzoff = document.querySelector('#boff');
+//KeySwitch
+var key = 0
 
 
 function start() {
@@ -32,16 +34,16 @@ const open1 = document.querySelector('#open1');
 const open2 = document.querySelector('#open2');
 
 open1.addEventListener('click', () => {
-  if (local == 1) {
-  door = 1
-  console.log(door)
+  if (local == 1 && key == 1) {
+    door = 1
+    console.log(door)
   }
 });
 
 open2.addEventListener('click', () => {
-  if (local == 1) {
-  door = 1
-  console.log(door)
+  if (local == 1 && key == 1) {
+    door = 1
+    console.log(door)
   }
 });
 
@@ -54,7 +56,7 @@ function interlockcheck() {
     interlockSwitch.classList.remove('on');
     clearInterval(blink);
     if (blink != null) {
-    clearInterval(blink);
+      clearInterval(blink);
       blink = null
     }
   }
@@ -62,7 +64,7 @@ function interlockcheck() {
     console.log("interlock on");
     interlockSwitch.classList.add('on');
     if (blink != null) {
-    clearInterval(blink);
+      clearInterval(blink);
       blink = null
     };
   }
@@ -102,7 +104,10 @@ function test() {
 }
 
 function doorcheck() {
-  if (door == 0 && local == 0) {
+  if (key == 0) {
+    interlock = 0
+  }
+  else if (door == 0 && local == 0) {
     interlock = 1
   }
   else if (door == 0 && local == 1) {
@@ -117,23 +122,31 @@ const buzzer = document.querySelector('.buzzer')
 let bmaintien = false;
 
 buzzer.addEventListener('mousedown', () => {
-  bmaintien = 1;
-  console.log("BUZZ");
+  if (key == 1) {
+    bmaintien = 1;
+    console.log("BUZZ");
+  }
 });
 
 buzzer.addEventListener('mouseup', () => {
-  bmaintien = 0;
-  console.log("UNBUZZ");
+  if (key == 1) {
+    bmaintien = 0;
+    console.log("UNBUZZ");
+  }
 });
 
 buzzer.addEventListener('touchstart', () => {
-  bmaintien = 1;
-  console.log("BUZZ");
+  if (key == 1) {
+    bmaintien = 1;
+    console.log("BUZZ");
+  }
 });
 
 buzzer.addEventListener('touchend', () => {
-  bmaintien = 0;
-  console.log("UNBUZZ");
+  if (key == 1) {
+    bmaintien = 0;
+    console.log("UNBUZZ");
+  }
 });
 
 
@@ -147,6 +160,19 @@ function checkbuzzer() {
 
 const close = document.querySelector('.close-button');
 close.addEventListener('click', () => {
-   door = 0
-  console.log("closed")
-  });
+  if (key == 1) {
+    door = 0
+    console.log("closed")
+  }
+});
+
+const keySwitch = document.querySelector('.key-switch');
+
+keySwitch.addEventListener('click', () => {
+  keySwitch.classList.toggle('on');
+  if (key == 0) {
+    key = 1
+  } else {
+    key = 0
+  }
+});

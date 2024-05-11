@@ -9,7 +9,38 @@
 </head>
 
 <body>
+  <script>
+    function updateTime() {
+      var now = new Date();
+      var hours = now.getHours().toString().padStart(2, '0');
+      var minutes = now.getMinutes().toString().padStart(2, '0');
+      var seconds = now.getSeconds().toString().padStart(2, '0');
+      var timeString = hours + ':' + minutes;
+      var secondsString = '<span class="seconds">' + seconds + '</span>';
+      document.getElementById('time').innerHTML = timeString + secondsString;
 
+      var day = now.getDate().toString().padStart(2, '0');
+      var month = (now.getMonth() + 1).toString().padStart(2, '0');
+      var year = now.getFullYear();
+      var dateString = day + '/' + month + '/' + year;
+      document.getElementById('date').textContent = dateString;
+    }
+
+    setInterval(updateTime, 1000);
+  </script>
+
+  <script>
+      setTimeout(function() {
+          var box = document.getElementById("box");
+          box.style.display = "block";
+          // Trigger a reflow before changing opacity to enable the transition effect
+          box.offsetHeight;
+          box.style.opacity = 1;
+      }, 1000);
+  </script>
+
+  <div id="time"></div>
+  <div id="date"></div>
   <div>
     <img id="base" src="assets/base.jpeg">
     <a>
@@ -38,6 +69,11 @@
     <div class="close-button">
       <a>
         <img id="close" src="assets/close.png">
+      </a>
+    </div>
+    <div class="key-switch">
+      <a>
+        <img id="key" src="assets/key.png">
       </a>
     </div>
   </div>
