@@ -4,33 +4,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>replit</title>
+  <title>Guard Panel</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
- 
+
   <div>
     <img id="base" src="assets/base.jpeg">
-     <a>
+    <a>
       <div class="lever-switch">
         <img src="assets/lever.png">
       </div>
-     </a>
-       <div class="interlock">
-         <img id="ioff" src="assets/interlock-off.png">
-         <img id="ion" src="assets/interlock-on.png">
-         
-      </div>
+    </a>
+    <div class="interlock">
+      <img id="ioff" src="assets/interlock-off.png">
+      <img id="ion" src="assets/interlock-on.png">
+    </div>
+    <div class=open-buttons>
+      <a>
+        <img id="open1" src="assets/open.png">
+      </a>
+      <a>
+        <img id="open2" src="assets/open.png">
+      </a>
+
+    </div>
   </div>
-<!-- <a>
+  <!-- <a>
     <div class="lever-switch">
       <img src="assets/lever.png">
     </div>
   </a> -->
   </div>
-  <script src="script.js"></script>
-  <button id="test" onclick="online()">TEST INTERLOCK LUMIERE</button>
+  <script src="script.js">
+    window.onload = start()
+  </script>
+  <button id="test" onclick="test()">TEST INTERLOCK LUMIERE</button>
 </body>
 
 </html>

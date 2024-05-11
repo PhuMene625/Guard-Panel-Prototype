@@ -62,3 +62,20 @@ html {
 #ioff.on {
   opacity: 0;
 }
+#ioff.off {
+  opacity: 1;
+}
+
+.open-buttons img {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+}
+#open1 {
+  left: 35px;
+  top: 140px;
+}
+#open2 {
+  left: 170px;
+  top: 140px;
+}
