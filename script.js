@@ -7,10 +7,14 @@ var interlock = 1
 var door = 0
 // Définir local door 0: fermé 1: ouvert
 var local = 0
+// Variable buzzer
+const buzzoff = document.querySelector('#boff');
+
 
 function start() {
   setInterval(interlockcheck, 1);
   setInterval(doorcheck, 1)
+  setInterval(checkbuzzer, 1)
 }
 
 const interlockSwitch = document.querySelector('#ioff');
@@ -68,7 +72,7 @@ function interlockcheck() {
       blinking()
     }
     /* interlockSwitch.classList.remove('off');
- /*interlockSwitch.classList.toggle('on');*/
+interlockSwitch.classList.toggle('on');*/
 
   }
 }
@@ -108,3 +112,41 @@ function doorcheck() {
     interlock = 0
   }
 }
+
+const buzzer = document.querySelector('.buzzer')
+let bmaintien = false;
+
+buzzer.addEventListener('mousedown', () => {
+  bmaintien = 1;
+  console.log("BUZZ");
+});
+
+buzzer.addEventListener('mouseup', () => {
+  bmaintien = 0;
+  console.log("UNBUZZ");
+});
+
+buzzer.addEventListener('touchstart', () => {
+  bmaintien = 1;
+  console.log("BUZZ");
+});
+
+buzzer.addEventListener('touchend', () => {
+  bmaintien = 0;
+  console.log("UNBUZZ");
+});
+
+
+function checkbuzzer() {
+  if (bmaintien == 1) {
+    buzzoff.classList.add('on');
+  } else if (bmaintien == 0) {
+    buzzoff.classList.remove('on');
+  }
+}
+
+const close = document.querySelector('.close-button');
+close.addEventListener('click', () => {
+   door = 0
+  console.log("closed")
+  });
