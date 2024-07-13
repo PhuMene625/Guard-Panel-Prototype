@@ -11,12 +11,61 @@ var local = 0
 const buzzoff = document.querySelector('#boff');
 //KeySwitch
 var key = 0
+// Etat du train
+let state
 
 
 function start() {
   setInterval(interlockcheck, 1);
-  setInterval(doorcheck, 1)
-  setInterval(checkbuzzer, 1)
+  setInterval(doorcheck, 1);
+  setInterval(checkbuzzer, 1);
+  portrait();
+  
+}
+
+function portrait(){
+  function getScreenOrientation() {
+    return window.screen.orientation.type;
+  }
+
+  function isPortraitMode() {
+    return getScreenOrientation() === "portrait-primary" || getScreenOrientation() === "portrait-secondary";
+  }
+
+  function blockPage() {
+    const overlay = document.createElement("div");
+    overlay.style.position = "fixed";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.width = "100%";
+    overlay.style.height = "100%";
+    overlay.style.background = "rgba(0, 0, 0, 0.5)";
+    overlay.style.zIndex = "1000";
+    document.body.appendChild(overlay);
+
+    const message = document.createElement("p");
+    message.style.color = "white";
+    message.style.fontSize = "24px";
+    message.style.textAlign = "center";
+    message.style.padding = "20px";
+    message.innerHTML = "Veuillez tourner votre appareil en mode paysage pour utiliser cette page.";
+    overlay.appendChild(message);
+  }
+
+  window.addEventListener("orientationchange", function() {
+    if (isPortraitMode()) {
+      blockPage();
+    } else {
+      const overlay = document.querySelector("div[style*='position: fixed;']");
+      if (overlay) {
+        overlay.remove();
+      }
+    }
+  });
+
+  if (isPortraitMode()) {
+    blockPage();
+  }
 }
 
 const interlockSwitch = document.querySelector('#ioff');
@@ -52,7 +101,7 @@ open2.addEventListener('click', () => {
 // Verifie interlock pour voyant
 function interlockcheck() {
   if (interlock == 0) {
-    console.log("interlock off");
+    //console.log("interlock off");
     interlockSwitch.classList.remove('on');
     clearInterval(blink);
     if (blink != null) {
@@ -61,7 +110,7 @@ function interlockcheck() {
     }
   }
   else if (interlock == 1) {
-    console.log("interlock on");
+    //console.log("interlock on");
     interlockSwitch.classList.add('on');
     if (blink != null) {
       clearInterval(blink);
@@ -69,7 +118,7 @@ function interlockcheck() {
     };
   }
   else if (interlock == 2) {
-    console.log("interlock blink");
+   // console.log("interlock blink");
     if (blink == null) {
       blinking()
     }
@@ -88,7 +137,7 @@ function blinking() {
 }
 
 // Bouton TEST INTERLOCK
-function test() {
+/*function test() {
   if (interlock == 0) {
     door = 0
     local = 0
@@ -101,20 +150,24 @@ function test() {
     door = 1
     local = 1
   }
-}
+}*/
 
 function doorcheck() {
   if (key == 0) {
     interlock = 0
+    cs("Panel HS")
   }
   else if (door == 0 && local == 0) {
     interlock = 1
+    cs("Portes Fermées")
   }
   else if (door == 0 && local == 1) {
     interlock = 2
+    cs("Local Ouvert")
   }
   else if (door == 1 && local == 1) {
     interlock = 0
+    cs("Portes Ouvertes")
   }
 }
 
@@ -176,3 +229,8 @@ keySwitch.addEventListener('click', () => {
     key = 0
   }
 });
+
+
+function cs(state){
+document.getElementById("ts").innerHTML = state;
+}
