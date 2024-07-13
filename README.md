@@ -6,6 +6,7 @@ More stuff may come in the future.
 First off, you have to switch the DOOR KEY SWITCH on which will activate the panel and then let you control it.
 If you wanna know how this would normally work, read below:
 ### Normal Guarding Process:
+##Notice: This is only based on the usual guarding process in Stepford County Railway.
 - Key switch ON (Diamond)
 - Local door switch OPEN
 - Open doors (Red buttons, both work)
