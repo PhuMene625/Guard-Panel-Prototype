@@ -189,3 +189,41 @@ img {
   color: white;
   text-align: center;
 }
+
+#train {
+  position: absolute;
+  height: 30%;
+  left: 0%;
+  bottom: 1%;
+  
+}
+
+.porte {
+  position: absolute;
+  height: 110px;
+}
+
+#p1 {
+  bottom: 43px;
+  left: 660px;
+}
+
+#p2 {
+  bottom: 43px;
+  left: 460px;
+}
+
+#p3 {
+  bottom: 43px;
+  left: 416px;
+}
+
+#p4 {
+  bottom: 43px;
+  left: 295px;
+}
+
+#p5 {
+  bottom: 43px;
+  left: 251px;
+}

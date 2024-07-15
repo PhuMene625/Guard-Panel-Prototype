@@ -29,15 +29,6 @@
     setInterval(updateTime, 1);
   </script>
 
-  <script>
-      setTimeout(function() {
-          var box = document.getElementById("box");
-          box.style.display = "block";
-          // Trigger a reflow before changing opacity to enable the transition effect
-          box.offsetHeight;
-          box.style.opacity = 1;
-      }, 1000);
-  </script>
 
   <div id="time"></div>
   <div id="date"></div>
@@ -62,7 +53,7 @@
     </div>
     <div class="buzzer">
       <a>
-          <img id="boff" src="assets/buzzoff.png" user-scalable="no">
+        <img id="boff" src="assets/buzzoff.png" user-scalable="no">
         <img id="bon" src="assets/buzzon.png">
       </a>
     </div>
@@ -84,14 +75,19 @@
   </a> -->
   </div>
   <script src="script.js">window.onload = start()</script>
-<!--  <button id="test" onclick="test()">TEST INTERLOCK LUMIERE</button> -->
+  <!--  <button id="test" onclick="test()">TEST INTERLOCK LUMIERE</button> -->
 
   <!--Partie Train-->
   <div class="train">
-    <h1 id="ts">
-      TEST
-    </h1>
+    <h1 id="ts">Placeholder</h1>
   </div>
+
+  <img id="train" src="assets/train.png">
+  <img id="p1" class="porte gauche" src="assets/porte1.png">
+  <img id="p2" class="porte droite" src="assets/porte2.png">
+  <img id="p3" class="porte gauche" src="assets/porte1.png">
+  <img id="p4" class="porte droite" src="assets/porte2.png">
+  <img id="p5" class="porte gauche" src="assets/porte1.png">
 </body>
 
 </html>
